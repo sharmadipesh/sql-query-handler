@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Search({
+function Search({
   preGlobalFilteredRows,
   globalFilter,
   setGlobalFilter,
@@ -13,17 +13,17 @@ export default function Search({
   }, 200)
 
   return (
-    <div>
+    <>
       <input
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
-        className="pagination-btn"
+        className="text-field search"
         placeholder={`Search records...`}
       />
-    </div>
+    </>
   )
 }
-// export default React.memo(Search);
+export default React.memo(Search);

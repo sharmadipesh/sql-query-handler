@@ -9,7 +9,7 @@ import {
   useAsyncDebounce,
 } from "react-table";
 
-export default function TableItems({
+function TableItems({
   loading,
   fetchData,
   columns,
@@ -19,7 +19,9 @@ export default function TableItems({
   currentCollectionData,
   pageCount: controlledPageCount,
 }) {
-  const [queryString, setQueryString] = React.useState(`SELECT * FROM ${tableName}`);
+  const [queryString, setQueryString] = React.useState(
+    `SELECT * FROM ${tableName}`
+  );
 
   const {
     getTableProps, // table props from react-table
@@ -47,6 +49,7 @@ export default function TableItems({
       columns,
       data,
       manualPagination: true,
+      autoResetPage: false,
       initialState: { pageIndex: 0 },
       pageCount: controlledPageCount,
     },
@@ -123,11 +126,13 @@ export default function TableItems({
               </tr>
             ))}
           </thead>
-          {loading ? (
+          {loading && columns?.length ? (
             <>
-              <div className="loading-container">
-                <Loading />
-              </div>
+              <td colSpan={columns?.length}>
+                <div className="loading-container">
+                  <Loading />
+                </div>
+              </td>
             </>
           ) : (
             <tbody {...getTableBodyProps()}>
@@ -215,4 +220,4 @@ export default function TableItems({
   );
 }
 
-// export default React.memo(TableItems);
+export default React.memo(TableItems);

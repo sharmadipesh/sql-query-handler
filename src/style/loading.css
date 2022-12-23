@@ -1,5 +1,7 @@
 .loading-container{
   margin:10px;
+  display: flex;
+  justify-content: center;
 }
 
 .loading {
