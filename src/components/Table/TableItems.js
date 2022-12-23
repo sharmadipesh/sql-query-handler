@@ -19,7 +19,7 @@ export default function TableItems({
   currentCollectionData,
   pageCount: controlledPageCount,
 }) {
-  // const [queryString, setQueryString] = React.useState(`SELECT * FROM ${tableName}`);
+  const [queryString, setQueryString] = React.useState(`SELECT * FROM ${tableName}`);
 
   const {
     getTableProps, // table props from react-table
@@ -78,14 +78,14 @@ export default function TableItems({
               useAsyncDebounce={useAsyncDebounce}
             />
           ) : null}
-          {/* <textarea
+          <textarea
             value={queryString}
             className="text-area"
             placeholder="Enter Queary String"
             onChange={(e) => setQueryString(e?.target?.value)}
           >
             {queryString}
-          </textarea> */}
+          </textarea>
         </div>
       ) : null}
       <div className="table-container">
